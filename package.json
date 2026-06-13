@@ -1,0 +1,18 @@
+{
+  "name": "form-builder-98",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "db:push": "cd packages/db && npx drizzle-kit push",
+    "db:studio": "cd packages/db && npx drizzle-kit studio"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.0.0"
+  }
+}
