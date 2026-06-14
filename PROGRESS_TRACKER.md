@@ -4,9 +4,9 @@
 ---
 
 ## CURRENT STATUS
-**Day:** 1
-**Step:** Phases 1–7 complete — monorepo, Docker, DB schema, Express+tRPC server (all routers), Next.js frontend, all window components, both servers running
-**Next Step:** Day 2 — Polish, testing, bugfixes, MyFormsWindow full integration
+**Day:** 2
+**Step:** Window system polished (drag/resize performance fixed, minimize logic corrected, duplicate icons removed, 8-directional edge resizing added).
+**Next Step:** Full integration testing and further polish.
 **Blockers:** None
 
 ---
@@ -33,6 +33,7 @@
 - [x] Analytics page shows charts (AnalyticsWindow with Recharts)
 - [x] Recycle Bin works (restore + permanent delete)
 - [x] Clippy tips rotating in bottom-right
+- [x] Win98Window bugfixes (drag performance, duplicate title bar icons, 8-directional edge resizing, minimize state preservation, native drag cursor)
 
 ---
 
