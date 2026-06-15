@@ -4,8 +4,8 @@
 ---
 
 ## CURRENT STATUS
-**Day:** 2
-**Step:** Window system polished (drag/resize performance fixed, minimize logic corrected, duplicate icons removed, 8-directional edge resizing added).
+**Day:** 3
+**Step:** Desktop experience enhanced (Draggable icons with strict grid & collision, Notepad app, Display Properties for wallpapers, Form Builder validation).
 **Next Step:** Full integration testing and further polish.
 **Blockers:** None
 
@@ -34,6 +34,14 @@
 - [x] Recycle Bin works (restore + permanent delete)
 - [x] Clippy tips rotating in bottom-right
 - [x] Win98Window bugfixes (drag performance, duplicate title bar icons, 8-directional edge resizing, minimize state preservation, native drag cursor)
+- [x] Form Builder: Added required fields toggle and enforced validation before submission
+- [x] Added "Back to Builder" navigation from Submissions and Analytics pages
+- [x] Added Display Properties (custom desktop wallpapers & themes, local storage persistence)
+- [x] Implemented Draggable Desktop Icons with strict vertical grid snapping, collision detection, and auto-arrange
+- [x] Enhanced UI with classic Win98 blue hover effects on desktop icons and lists
+- [x] Built Notepad application with menus, word wrap, cursor tracking, and functional Save/Save As downloads
+- [x] Reordered default desktop icons layout (Recycle Bin under My Forms)
+- [x] Updated favicon for Next.js App Router
 
 ---
 
