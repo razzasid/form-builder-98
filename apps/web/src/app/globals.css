@@ -1,0 +1,446 @@
+/* =====================================================
+   FORMBUILDER 98 — Global Styles
+   Windows 98 aesthetic on a dark forest green desktop
+   ===================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Pixelated MS Sans Serif', 'MS Sans Serif', Arial, sans-serif;
+  font-size: 11px;
+}
+
+/* ── Desktop ─────────────────────────────────────── */
+.desktop {
+  width: 100vw;
+  height: calc(100vh - 28px);
+  background: radial-gradient(ellipse at center, #2d6b2d 0%, #1a4a1a 60%, #0d2b0d 100%);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── Desktop Icons ──────────────────────────────── */
+.desktop-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 80px;
+  cursor: pointer;
+  padding: 4px;
+  border: 1px dashed transparent;
+}
+
+.desktop-icon:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 128, 0.5);
+}
+
+.desktop-icon.selected {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 128, 0.7);
+}
+
+.desktop-icon .icon-emoji {
+  width: 48px;
+  height: 48px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-icon span:last-child {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+/* ── Taskbar ─────────────────────────────────────── */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  z-index: 10000;
+}
+
+.start-btn {
+  font-weight: bold;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  min-width: 54px;
+  height: 22px;
+}
+
+.taskbar-separator {
+  width: 2px;
+  height: 20px;
+  background: #808080;
+  border-right: 1px solid #ffffff;
+  margin: 0 4px;
+}
+
+.taskbar-windows {
+  display: flex;
+  gap: 2px;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.taskbar-item {
+  height: 22px;
+  min-width: 80px;
+  max-width: 150px;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background: #c0c0c0;
+  cursor: pointer;
+  padding: 1px 6px;
+  text-align: left;
+}
+
+.taskbar-item-active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: #d4d0c8;
+  font-weight: bold;
+}
+
+.taskbar-item-minimized {
+  font-style: italic;
+  color: #555;
+}
+
+.taskbar-clock {
+  margin-left: auto;
+  border: 1px inset #c0c0c0;
+  padding: 2px 8px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* ── Start Menu ──────────────────────────────────── */
+.start-menu {
+  position: fixed;
+  bottom: 28px;
+  left: 0;
+  width: 200px;
+  background: #c0c0c0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  z-index: 10001;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.start-menu-brand {
+  background: linear-gradient(180deg, #808080, #404040);
+  width: 28px;
+  color: white;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 8px 6px;
+  float: left;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-menu-items {
+  padding-left: 28px;
+}
+
+.start-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.start-menu-item:hover {
+  background: #000080;
+  color: white;
+}
+
+.start-menu-divider {
+  height: 1px;
+  background: #808080;
+  border-bottom: 1px solid #ffffff;
+  margin: 2px 0;
+}
+
+/* ── Clippy ──────────────────────────────────────── */
+.clippy {
+  position: fixed;
+  bottom: 40px;
+  right: 16px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.clippy-bubble {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background: #ffffc0;
+  border: 1px solid #000;
+  padding: 6px 8px;
+  font-size: 11px;
+  max-width: 180px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.clippy-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 20px;
+  border: 4px solid transparent;
+  border-top-color: #000;
+}
+
+/* ── Win98 Window System ─────────────────────────── */
+.win98-window {
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background: #c0c0c0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.win98-window-active {
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.win98-window .title-bar {
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.win98-window .title-bar.inactive {
+  background: linear-gradient(90deg, #808080, #c0c0c0);
+}
+
+.win98-window-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Title bar control buttons ────────────────────── */
+.title-bar-controls {
+  display: flex;
+  gap: 2px;
+}
+
+.title-bar-controls button {
+  width: 16px;
+  height: 14px;
+  min-width: 16px;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background: #c0c0c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  font-size: 0;
+}
+
+.title-bar-controls button:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Title bar control buttons use native 98.css styles based on aria-label */
+
+/* ── Resize handles ───────────────────────────────── */
+.win98-resize-edge {
+  position: absolute;
+  z-index: 10;
+}
+.win98-resize-n { top: -2px; left: 0; right: 0; height: 4px; cursor: n-resize; }
+.win98-resize-s { bottom: -2px; left: 0; right: 0; height: 4px; cursor: s-resize; }
+.win98-resize-e { top: 0; bottom: 0; right: -2px; width: 4px; cursor: e-resize; }
+.win98-resize-w { top: 0; bottom: 0; left: -2px; width: 4px; cursor: w-resize; }
+.win98-resize-nw { top: -2px; left: -2px; width: 6px; height: 6px; cursor: nw-resize; }
+.win98-resize-ne { top: -2px; right: -2px; width: 6px; height: 6px; cursor: ne-resize; }
+.win98-resize-sw { bottom: -2px; left: -2px; width: 6px; height: 6px; cursor: sw-resize; }
+.win98-resize-se {
+  bottom: 0; right: 0; width: 12px; height: 12px; cursor: se-resize;
+  background: linear-gradient(135deg, transparent 30%, #808080 30%, #808080 35%, transparent 35%, transparent 45%, #808080 45%, #808080 50%, transparent 50%, transparent 60%, #808080 60%, #808080 65%, transparent 65%);
+}
+
+/* ── Dialog backdrop ─────────────────────────────── */
+.win98-dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+/* ── Legacy overlays (kept for inner dialogs like Create Form) ── */
+.window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  z-index: 1000;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.window-active {
+  z-index: 5000;
+}
+
+/* ── Form Builder ─────────────────────────────────── */
+.form-builder-toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-bottom: 1px solid #808080;
+  flex-wrap: wrap;
+  background: #c0c0c0;
+  flex-shrink: 0;
+}
+
+.field-row-builder {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid #808080;
+  margin-bottom: 4px;
+  background: white;
+}
+
+.field-row-builder:hover {
+  background: #f0f0f0;
+}
+
+.field-number {
+  font-weight: bold;
+  min-width: 20px;
+  color: #000080;
+}
+
+/* ── Submissions Table ───────────────────────────── */
+.submissions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.submissions-table th,
+.submissions-table td {
+  border: 1px solid #808080;
+  padding: 3px 6px;
+  text-align: left;
+}
+
+.submissions-table th {
+  background: #000080;
+  color: white;
+}
+
+.submissions-table tr:nth-child(even) {
+  background: #f0f0f0;
+}
+
+/* ── Scrollable window body ──────────────────────── */
+.scrollable {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Status bar ──────────────────────────────────── */
+.status-bar {
+  flex-shrink: 0;
+}
+
+.status-bar-field {
+  flex: 1;
+}
+
+/* ── UI List Hover Effects ────────────────────────── */
+.my-form-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  border-bottom: 1px solid #c0c0c0;
+  cursor: pointer;
+}
+
+.my-form-item:hover {
+  background: #000080;
+  color: white;
+}
+
+.my-form-item:hover .text-muted {
+  color: #e0e0e0 !important;
+}
