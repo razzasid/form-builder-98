@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { router, protectedProcedure, publicProcedure } from '../trpc';
 import { db, formFields, forms } from '@form-builder/db';
-import { eq, and } from 'drizzle-orm';
+import { eq, and, inArray } from 'drizzle-orm';
 import { TRPCError } from '@trpc/server';
 
 const fieldInputSchema = z.object({
@@ -29,16 +29,50 @@ export const fieldsRouter = router({
         .where(and(eq(forms.id, input.formId), eq(forms.userId, ctx.user.id)));
       if (!form) throw new TRPCError({ code: 'NOT_FOUND', message: 'Form not found' });
 
-      // Delete all existing fields for this form
-      await db.delete(formFields).where(eq(formFields.formId, input.formId));
+      // Get existing fields
+      const existingFields = await db
+        .select({ id: formFields.id })
+        .from(formFields)
+        .where(eq(formFields.formId, input.formId));
 
-      if (input.fields.length === 0) return [];
+      const inputIds = input.fields.map((f) => f.id).filter(Boolean) as string[];
+      
+      const toDelete = existingFields.filter((f) => !inputIds.includes(f.id));
+      const toUpdate = input.fields.filter((f) => f.id);
+      const toInsert = input.fields.filter((f) => !f.id);
 
-      // Re-insert all fields
-      const inserted = await db
-        .insert(formFields)
-        .values(
-          input.fields.map((f) => ({
+      // 1. Delete removed fields
+      if (toDelete.length > 0) {
+        await db.delete(formFields).where(
+          and(
+            eq(formFields.formId, input.formId),
+            inArray(formFields.id, toDelete.map((f) => f.id))
+          )
+        );
+      }
+
+      // 2. Update existing fields
+      if (toUpdate.length > 0) {
+        await Promise.all(
+          toUpdate.map((f) =>
+            db.update(formFields)
+              .set({
+                type: f.type,
+                label: f.label,
+                placeholder: f.placeholder,
+                required: f.required,
+                options: f.options ?? null,
+                displayOrder: f.displayOrder,
+              })
+              .where(eq(formFields.id, f.id!))
+          )
+        );
+      }
+
+      // 3. Insert new fields
+      if (toInsert.length > 0) {
+        await db.insert(formFields).values(
+          toInsert.map((f) => ({
             formId: input.formId,
             type: f.type,
             label: f.label,
@@ -47,13 +81,13 @@ export const fieldsRouter = router({
             options: f.options ?? null,
             displayOrder: f.displayOrder,
           }))
-        )
-        .returning();
+        );
+      }
 
       // Update form updatedAt
       await db.update(forms).set({ updatedAt: new Date() }).where(eq(forms.id, input.formId));
 
-      return inserted;
+      return await db.select().from(formFields).where(eq(formFields.formId, input.formId));
     }),
 
   getByFormId: publicProcedure
