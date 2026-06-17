@@ -15,6 +15,8 @@ import { SubmissionsWindow } from '@/components/windows/SubmissionsWindow';
 import { AnalyticsWindow } from '@/components/windows/AnalyticsWindow';
 import { DisplayPropertiesWindow } from '@/components/windows/DisplayPropertiesWindow';
 import { NotepadWindow } from '@/components/windows/NotepadWindow';
+import { ClippyWindow } from '@/components/windows/ClippyWindow';
+import { ScanDiskWindow } from '@/components/windows/ScanDiskWindow';
 
 export default function HomePage() {
   const { windows, user, setUser } = useWindowStore();
@@ -48,6 +50,8 @@ export default function HomePage() {
       {user && windows.has('analytics') && <AnalyticsWindow />}
       {user && windows.has('displayProperties') && <DisplayPropertiesWindow />}
       {user && windows.has('notepad') && <NotepadWindow />}
+      {user && windows.has('clippy') && <ClippyWindow />}
+      {user && windows.has('scanDisk') && <ScanDiskWindow />}
     </>
   );
 }

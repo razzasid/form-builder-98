@@ -3,7 +3,7 @@ import { AuthUser } from '@/lib/auth';
 
 export type WindowName = 'login' | 'register' | 'myForms' | 'createForm' |
                   'formBuilder' | 'formPreview' | 'submissions' |
-                  'analytics' | 'recycleBin' | 'displayProperties' | 'notepad';
+                  'analytics' | 'recycleBin' | 'displayProperties' | 'notepad' | 'clippy' | 'scanDisk';
 
 export interface WindowState {
   isMinimized: boolean;
@@ -33,6 +33,8 @@ const WINDOW_DEFAULTS: Partial<Record<WindowName, { width: number; height: numbe
   recycleBin: { width: 550, height: 400 },
   displayProperties: { width: 450, height: 400 },
   notepad: { width: 600, height: 450 },
+  clippy: { width: 420, height: 520 },
+  scanDisk: { width: 680, height: 450 },
 };
 
 let nextZIndex = 100;

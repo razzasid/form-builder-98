@@ -13,6 +13,8 @@ const WINDOW_LABELS: Record<string, string> = {
   submissions: '📥 Submissions',
   analytics: '📊 Analytics',
   recycleBin: '🗑️ Recycle Bin',
+  clippy: '📎 Clippy — AI Form Assi',
+  scanDisk: '💾 ScanDisk',
 };
 
 export function Taskbar() {

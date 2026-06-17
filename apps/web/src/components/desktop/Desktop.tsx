@@ -7,6 +7,7 @@ import { Clippy } from './Clippy';
 import { AuthUser } from '@/lib/auth';
 import { getWallpaperStyle } from '@/lib/wallpaper';
 import { useState } from 'react';
+import { Bsod } from './Bsod';
 
 interface Props {
   user: AuthUser | null;
@@ -15,6 +16,7 @@ interface Props {
 export function Desktop({ user }: Props) {
   const { openWindow, closeStartMenu, wallpaper, autoArrangeIcons } = useWindowStore();
   const [contextMenu, setContextMenu] = useState<{ x: number, y: number } | null>(null);
+  const [isBsod, setIsBsod] = useState(false);
 
   const handleContextMenu = (e: React.MouseEvent) => {
     // Only show if clicking directly on the desktop background
@@ -43,6 +45,7 @@ export function Desktop({ user }: Props) {
           <>
             <DesktopIcon id="login" defaultIndex={0} emoji="🔑" label="Login" onDoubleClick={() => openWindow('login')} />
             <DesktopIcon id="register" defaultIndex={1} emoji="📝" label="Register" onDoubleClick={() => openWindow('register')} />
+            <DesktopIcon id="scaryShortcut" defaultIndex={2} emoji="💀" label="Scary Shortcut" onDoubleClick={() => setIsBsod(true)} />
           </>
         ) : (
           <>
@@ -51,11 +54,14 @@ export function Desktop({ user }: Props) {
             <DesktopIcon id="notepad" defaultIndex={2} emoji="📝" label="Notepad" onDoubleClick={() => openWindow('notepad')} />
             <DesktopIcon id="displayProperties" defaultIndex={3} emoji="🖥️" label="Display" onDoubleClick={() => openWindow('displayProperties')} />
             <DesktopIcon id="analytics" defaultIndex={4} emoji="📊" label="Analytics" onDoubleClick={() => openWindow('analytics')} />
-            <DesktopIcon id="scanDisk" defaultIndex={5} emoji="💾" label="ScanDisk" onDoubleClick={() => alert('ScanDisk: No errors found on drive C:')} />
+            <DesktopIcon id="scanDisk" defaultIndex={5} emoji="💾" label="ScanDisk" onDoubleClick={() => openWindow('scanDisk')} />
             <DesktopIcon id="musicPlayer" defaultIndex={6} emoji="🎵" label="Music Player" onDoubleClick={() => alert('♫ Now playing: Windows 98 startup jingle')} />
+            <DesktopIcon id="scaryShortcut" defaultIndex={7} emoji="💀" label="Scary Shortcut" onDoubleClick={() => setIsBsod(true)} />
           </>
         )}
       </div>
+
+      {isBsod && <Bsod onClose={() => setIsBsod(false)} />}
 
       <StartMenu />
       <Clippy user={user} />

@@ -48,6 +48,7 @@ export function Win98Window({
 
   // ── Drag handlers ───────────────────────────────────
   const handleDragStart = useCallback((e: React.MouseEvent) => {
+    if (name === 'clippy') return;
     if (ws?.isMaximized) return;
     isDragging.current = true;
     dragOffset.current = {
@@ -213,6 +214,17 @@ export function Win98Window({
         width: ws.width,
         maxHeight: 'calc(100vh - 60px)',
       }
+    : name === 'clippy'
+    ? {
+        position: 'fixed',
+        right: '70px',
+        bottom: '60px',
+        width: ws.width,
+        height: ws.height,
+        zIndex: ws.zIndex,
+        display: 'flex',
+        flexDirection: 'column',
+      }
     : {
         position: 'fixed',
         left: ws.x,
@@ -276,7 +288,7 @@ export function Win98Window({
         </div>
 
         {/* Resize edges — only for non-maximized, non-dialog windows */}
-        {!ws.isMaximized && !isDialog && (
+        {!ws.isMaximized && !isDialog && name !== 'clippy' && (
           <>
             <div className="win98-resize-edge win98-resize-n" onMouseDown={(e) => handleResizeStart(e, 'n')} />
             <div className="win98-resize-edge win98-resize-s" onMouseDown={(e) => handleResizeStart(e, 's')} />

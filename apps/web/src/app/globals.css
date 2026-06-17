@@ -444,3 +444,174 @@ body {
 .my-form-item:hover .text-muted {
   color: #e0e0e0 !important;
 }
+
+/* ── Clippy AI Chat Window ───────────────────────── */
+.clippy-chat-area {
+  flex: 1;
+  padding: 8px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 2px inset #c0c0c0;
+  margin: 4px;
+  min-height: 100px;
+}
+
+.clippy-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.clippy-msg-user {
+  flex-direction: row-reverse;
+}
+
+.clippy-msg-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.clippy-msg-bubble {
+  padding: 6px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.clippy-msg-bubble-clippy {
+  background: #ffffc0;
+  border: 1px solid #c0c000;
+  border-radius: 2px;
+}
+
+.clippy-msg-bubble-user {
+  background: #000080;
+  color: #ffffff;
+  border: 1px solid #000060;
+  border-radius: 2px;
+  text-align: right;
+}
+
+/* Typing indicator */
+.clippy-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+}
+
+.clippy-dot {
+  width: 6px;
+  height: 6px;
+  background: #808080;
+  border-radius: 50%;
+  animation: clippy-bounce 1.2s infinite ease-in-out;
+}
+
+.clippy-dot:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.clippy-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes clippy-bounce {
+  0%, 60%, 100% { transform: translateY(0); background: #808080; }
+  30% { transform: translateY(-6px); background: #000080; }
+}
+
+/* Form Preview */
+.clippy-form-preview {
+  margin: 0 4px 4px;
+  border: 2px inset #c0c0c0;
+  background: #f5f5dc;
+  max-height: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.clippy-preview-header {
+  padding: 6px 8px;
+  border-bottom: 1px solid #c0c0c0;
+  background: #f0f0e0;
+  font-size: 11px;
+}
+
+.clippy-preview-fields {
+  flex: 1;
+  padding: 4px 8px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.clippy-preview-field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 11px;
+  border-bottom: 1px dotted #d0d0c0;
+}
+
+.clippy-preview-field:last-child {
+  border-bottom: none;
+}
+
+.clippy-preview-actions {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+  border-top: 1px solid #c0c0c0;
+  background: #f0f0e0;
+}
+
+/* Saved Forms */
+.clippy-saved-forms {
+  margin: 0 4px 4px;
+  padding: 6px 8px;
+  border: 2px inset #c0c0c0;
+  background: #ffffc0;
+}
+
+.clippy-saved-form-btn {
+  font-size: 10px;
+  padding: 2px 8px;
+  background: #e0e0c0;
+  border: 1px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+}
+
+.clippy-saved-form-btn:hover {
+  background: #000080;
+  color: white;
+}
+
+.clippy-saved-form-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Input Bar */
+.clippy-input-bar {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-top: 1px solid #808080;
+  background: #c0c0c0;
+  flex-shrink: 0;
+}
+
+.clippy-input-bar input {
+  font-size: 11px;
+}
+
+.clippy-input-bar button {
+  padding: 2px 12px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
