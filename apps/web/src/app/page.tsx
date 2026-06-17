@@ -17,6 +17,7 @@ import { DisplayPropertiesWindow } from '@/components/windows/DisplayPropertiesW
 import { NotepadWindow } from '@/components/windows/NotepadWindow';
 import { ClippyWindow } from '@/components/windows/ClippyWindow';
 import { ScanDiskWindow } from '@/components/windows/ScanDiskWindow';
+import { MusicPlayerWindow } from '@/components/windows/MusicPlayerWindow';
 
 export default function HomePage() {
   const { windows, user, setUser } = useWindowStore();
@@ -52,6 +53,7 @@ export default function HomePage() {
       {user && windows.has('notepad') && <NotepadWindow />}
       {user && windows.has('clippy') && <ClippyWindow />}
       {user && windows.has('scanDisk') && <ScanDiskWindow />}
+      {user && windows.has('musicPlayer') && <MusicPlayerWindow />}
     </>
   );
 }

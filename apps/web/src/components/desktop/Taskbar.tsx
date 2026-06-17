@@ -15,6 +15,7 @@ const WINDOW_LABELS: Record<string, string> = {
   recycleBin: '🗑️ Recycle Bin',
   clippy: '📎 Clippy — AI Form Assi',
   scanDisk: '💾 ScanDisk',
+  musicPlayer: '🎵 Music Player',
 };
 
 export function Taskbar() {

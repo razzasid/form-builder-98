@@ -55,7 +55,7 @@ export function Desktop({ user }: Props) {
             <DesktopIcon id="displayProperties" defaultIndex={3} emoji="🖥️" label="Display" onDoubleClick={() => openWindow('displayProperties')} />
             <DesktopIcon id="analytics" defaultIndex={4} emoji="📊" label="Analytics" onDoubleClick={() => openWindow('analytics')} />
             <DesktopIcon id="scanDisk" defaultIndex={5} emoji="💾" label="ScanDisk" onDoubleClick={() => openWindow('scanDisk')} />
-            <DesktopIcon id="musicPlayer" defaultIndex={6} emoji="🎵" label="Music Player" onDoubleClick={() => alert('♫ Now playing: Windows 98 startup jingle')} />
+            <DesktopIcon id="musicPlayer" defaultIndex={6} emoji="🎵" label="Music Player" onDoubleClick={() => openWindow('musicPlayer')} />
             <DesktopIcon id="scaryShortcut" defaultIndex={7} emoji="💀" label="Scary Shortcut" onDoubleClick={() => setIsBsod(true)} />
           </>
         )}

@@ -4,8 +4,8 @@
 ---
 
 ## CURRENT STATUS
-**Day:** 3
-**Step:** Desktop experience enhanced (Draggable icons with strict grid & collision, Notepad app, Display Properties for wallpapers, Form Builder validation).
+**Day:** 4
+**Step:** AI features fully enabled (Clippy assistant via Gemini 2.5 Flash, dynamic pleasantries blocker), plus new retro applications (ScanDisk with scanning audio loop and success popup; Music Player with MP3 playlist, volume, seek slider, and auto-next track transition).
 **Next Step:** Full integration testing and further polish.
 **Blockers:** None
 
@@ -42,6 +42,11 @@
 - [x] Built Notepad application with menus, word wrap, cursor tracking, and functional Save/Save As downloads
 - [x] Reordered default desktop icons layout (Recycle Bin under My Forms)
 - [x] Updated favicon for Next.js App Router
+- [x] Clippy AI Form Assistant integrated with Gemini 2.5 Flash API (auto-generates fields, saves to database, opens in builder)
+- [x] Clippy off-topic prompt interception (sarcastic, witty, dynamic responses for greetings or off-topic questions)
+- [x] ScanDisk application with progress tracking, animated cluster grid blocks, audio loop, and retro success popup
+- [x] Music Player application with custom user MP3 playlist, seek bar, time elapsed index, volume control, and auto-transition to next track
+- [x] Replaced modern emojis in player controls with highly compatible classic Unicode geometric shapes (`|◀`, `▶`, `❚❚`, `■`, `▶|`, `♫`)
 
 ---
 
@@ -58,6 +63,7 @@ router/
   forms.ts            ← full CRUD + generateShareToken + softDelete/restore/permanentDelete
   fields.ts           ← saveAll (bulk replace), getByFormId
   submissions.ts      ← submit (public), list (protected), getAnalytics
+  ai.ts               ← generateForm (protected mutation calling Gemini 2.5 Flash)
 ```
 
 ### apps/web/src/
@@ -89,6 +95,8 @@ components/
     SubmissionsWindow.tsx   ← table view of all responses
     AnalyticsWindow.tsx     ← Recharts line + bar charts
     RecycleBinWindow.tsx    ← restore + permanent delete
+    ScanDiskWindow.tsx      ← animated sector checking, progress bar, audio loop
+    MusicPlayerWindow.tsx    ← MP3 playlist, seek, play/pause/stop/prev/next, volume slider
 ```
 
 ---
@@ -192,3 +200,5 @@ cmd /c npm run dev
 | `@tanstack/react-query@4.36.0` not found | Used `4.44.0` (exact version, not `4.36.0`) |
 | `recharts` → `react-is` not found | Installed `react-is` separately as peer dep for recharts 3 |
 | Server `npm install` workspace warning | `npm warn workspaces @form-builder/server in filter set` — harmless, install succeeded |
+| Gemini API 429 Quota Exceeded (limit: 0) | Gemini 2.0-flash-lite / 2.0-flash free tier had zero quota enabled. Resolved by switching to `gemini-2.5-flash` model which was fully provisioned on standard key quota. |
+| Music Player emojis displaying as black boxes | Replaced color emojis with classic Unicode geometric shapes (`|◀`, `▶`, `❚❚`, `■`, `▶|`, `♫`) for 100% retro theme compatibility. |
