@@ -21,6 +21,9 @@ app.use(express.json());
 app.use('/trpc', createExpressMiddleware({
   router: appRouter,
   createContext,
+  onError: ({ error }) => {
+    console.error('tRPC Error:', error);
+  },
 }));
 
 // Health check
