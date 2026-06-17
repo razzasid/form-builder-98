@@ -42,16 +42,16 @@ export function SubmissionsWindow() {
                 <tr>
                   <th>#</th>
                   <th>Submitted At</th>
-                  {fields.map((f) => <th key={f.id}>{f.label}</th>)}
+                  {fields.map((f: any) => <th key={f.id}>{f.label}</th>)}
                 </tr>
               </thead>
               <tbody>
-                {submissions.map((sub, idx) => (
+                {submissions.map((sub: any, idx: number) => (
                   <tr key={sub.id}>
                     <td>{idx + 1}</td>
                     <td>{new Date(sub.submittedAt).toLocaleString()}</td>
-                    {fields.map((f) => {
-                      const answer = sub.answers.find((a) => a.fieldId === f.id);
+                    {fields.map((f: any) => {
+                      const answer = sub.answers.find((a: any) => a.fieldId === f.id);
                       return <td key={f.id}>{answer?.value || '—'}</td>;
                     })}
                   </tr>
