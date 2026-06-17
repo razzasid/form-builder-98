@@ -37,7 +37,7 @@ export const fieldsRouter = router({
 
       const inputIds = input.fields.map((f) => f.id).filter(Boolean) as string[];
       
-      const toDelete = existingFields.filter((f) => !inputIds.includes(f.id));
+      const toDelete = existingFields.filter((f: any) => !inputIds.includes(f.id));
       const toUpdate = input.fields.filter((f) => f.id);
       const toInsert = input.fields.filter((f) => !f.id);
 
@@ -46,7 +46,7 @@ export const fieldsRouter = router({
         await db.delete(formFields).where(
           and(
             eq(formFields.formId, input.formId),
-            inArray(formFields.id, toDelete.map((f) => f.id))
+            inArray(formFields.id, toDelete.map((f: any) => f.id))
           )
         );
       }

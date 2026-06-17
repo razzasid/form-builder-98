@@ -69,7 +69,7 @@ export const submissionsRouter = router({
 
       // Get answers for each submission
       const result = await Promise.all(
-        subs.map(async (sub) => {
+        subs.map(async (sub: any) => {
           const answers = await db
             .select()
             .from(submissionAnswers)
@@ -106,13 +106,13 @@ export const submissionsRouter = router({
 
       // Build per-field analytics
       const fieldAnalytics = await Promise.all(
-        fields.map(async (field) => {
+        fields.map(async (field: any) => {
           const answers = await db
             .select()
             .from(submissionAnswers)
             .where(eq(submissionAnswers.fieldId, field.id));
 
-          const nonEmpty = answers.filter((a) => a.value && a.value.trim() !== '');
+          const nonEmpty = answers.filter((a: any) => a.value && a.value.trim() !== '');
 
           // For choice fields: count each option
           let distribution: { label: string; count: number }[] = [];
@@ -120,7 +120,7 @@ export const submissionsRouter = router({
             const options = field.options as string[];
             distribution = options.map((opt) => ({
               label: opt,
-              count: answers.filter((a) => a.value === opt || (a.value?.split(',').map(v => v.trim()).includes(opt))).length,
+              count: answers.filter((a: any) => a.value === opt || (a.value?.split(',').map((v: any) => v.trim()).includes(opt))).length,
             }));
           }
 
@@ -136,7 +136,7 @@ export const submissionsRouter = router({
       );
 
       // Submissions per day (last 30 days)
-      const submissionsPerDay = allSubmissions.reduce<Record<string, number>>((acc, sub) => {
+      const submissionsPerDay = allSubmissions.reduce<Record<string, number>>((acc: any, sub: any) => {
         const day = sub.submittedAt.toISOString().split('T')[0];
         acc[day] = (acc[day] || 0) + 1;
         return acc;
